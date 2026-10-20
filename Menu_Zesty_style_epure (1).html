@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Menu — Concession C1 · Snacks &amp; Boissons</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --card: #ffffff;
+  --ink: #252A32;
+  --mut: #68727D;
+  --line: #E6EAF0;
+  --accent: #6D9D95;
+  --accent-soft: #EAF5F2;
+  --price: #C75F69;
+  --alert: #D87983;
+  /* Palette pastel fraîche : aucun beige ni marron */
+  --salmon: #F3C2C9;
+  --red: #ECA8B0;
+  --teal: #B7E0E4;
+  --amber: #F5DFA0;
+  --orange: #F6C9A8;
+  --green: #CBE7CE;
+  --blue: #C6DDF5;
+  --pink: #F7D9E0;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+*, *::before, *::after { box-sizing: inherit; }
+html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 60px); scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 15px/1.48 "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 22px 32px; }
+.hero { text-align: center; padding: 42px 12px 26px; border-bottom: 1px solid var(--line); }
+.eb { letter-spacing: .13em; text-transform: uppercase; font-size: 10px; color: var(--mut); font-weight: 700; }
+h1 { font: 800 clamp(42px, 6vw, 58px)/1.05 Manrope, "DM Sans", sans-serif; margin: 8px 0 10px; color: var(--ink); letter-spacing: -.045em; }
+.tag { display: flex; align-items: center; justify-content: center; gap: 12px; font: 600 13px/1.5 "DM Sans", sans-serif; color: var(--accent); letter-spacing: .07em; text-transform: uppercase; }
+.tag:before, .tag:after { content: ""; height: 1px; width: 34px; background: #a8b8ad; }
+nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line); display: flex; gap: 8px; overflow-x: auto; padding: 12px 0; margin: 0 0 22px; }
+nav a { white-space: nowrap; text-decoration: none; color: var(--mut); border: 1px solid var(--line); border-radius: 6px; padding: 7px 13px; font-size: 12px; font-weight: 600; background: #fff; transition: border-color .15s ease, color .15s ease; }
+nav a:hover, nav a:focus-visible { border-color: #A8D7D0; color: var(--ink); outline: none; }
+.cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 16px; }
+.card { min-width: 0; break-inside: avoid; background: var(--card); border: 1px solid var(--line); border-top: 3px solid var(--a, var(--accent-soft)); border-radius: 10px; padding: 17px 18px 8px; margin: 0; }
+h2 { display: flex; align-items: center; gap: 10px; margin: 0 0 8px; font: 700 19px/1.25 Manrope, "DM Sans", sans-serif; letter-spacing: -.025em; }
+h2 .ic { display: grid; place-items: center; flex: 0 0 29px; width: 29px; height: 29px; border-radius: 8px; background: color-mix(in srgb, var(--a, var(--accent-soft)) 42%, white); color: var(--ink); font: 700 10px/1 "DM Sans", sans-serif; letter-spacing: .03em; }
+h2 small { margin-left: 2px; font: 500 11px/1.3 "DM Sans", sans-serif; color: var(--mut); letter-spacing: .01em; }
+.note { margin: 0 0 7px; font-size: 12px; color: var(--mut); }
+ul { list-style: none; margin: 0; padding: 0; }
+li { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; padding: 10px 0; border-top: 1px solid #EEF1F5; }
+li:first-child { border-top: 0; }
+li > div { min-width: 0; }
+li b { font-weight: 700; font-size: 13.5px; }
+li i { display: block; font-style: normal; font-size: 12px; color: var(--mut); line-height: 1.42; margin-top: 2px; }
+li em { display: block; font-style: normal; font-size: 10.5px; color: var(--accent); margin-top: 4px; font-weight: 500; }
+.p { flex-shrink: 0; font-weight: 700; font-size: 13px; white-space: nowrap; text-align: right; color: var(--price); font-variant-numeric: tabular-nums; }
+.p small { font-weight: 500; font-size: 10px; color: var(--mut); }
+.flavors { display: block; font-size: 11px; line-height: 1.45; color: var(--mut); font-weight: 500; margin: 2px 0 1px; }
+footer { text-align: center; font-size: 11px; color: var(--mut); padding-top: 22px; }
+@media (max-width: 680px) {
+  .wrap { padding: 0 14px 24px; }
+  .hero { padding: 32px 8px 22px; }
+  nav { margin-bottom: 16px; }
+  .cols { grid-template-columns: 1fr; gap: 12px; }
+  .card { padding: 15px 15px 7px; }
+}
+@media print {
+  @page { size: A4; margin: 10mm; }
+  body { background: #fff !important; color: #111 !important; font-size: 10.5px; }
+  nav { display: none; }
+  .wrap { max-width: none; padding: 0; }
+  .hero { padding: 8px 0 10px; }
+  h1 { font-size: 36px; }
+  .cols { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .card { background: #fff !important; padding: 9px 10px 4px; margin: 0; border-radius: 5px; }
+  h2 { font-size: 16px; margin-bottom: 4px; }
+  li { padding: 5px 0; gap: 8px; }
+  li b { font-size: 11px; }
+  li i { font-size: 10px; }
+  li em { font-size: 9px; }
+  .p { font-size: 11px; }
+  footer { padding-top: 10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+<div class="eb">Concession C1 · Snacks &amp; Boissons</div>
+<h1>Menu</h1>
+<div class="tag">Savourer le local · Taste the local</div>
+</header>
+<nav><a href="#formules">Formules</a><a href="#sales">Salés</a><a href="#sucres">Sucrés</a><a href="#jus">Jus</a><a href="#chaud">Chaud</a><a href="#frais">Frais</a></nav>
+<main class="cols">
+
+<section class="card" id="formules" style="--a:var(--amber)">
+<h2><span class="ic">01</span>Formules <small>Combos</small></h2>
+<ul>
+<li><div><b>Teranga box</b><i>6 snacks salés + 1 boisson</i><em>Allergènes : voir chaque produit</em></div><span class="p">3 500 F</span></li>
+<li><div><b>Sweet box</b><i>3 snacks sucrés (1 beignet + 2 mini-viennoiseries) + 1 boisson chaude</i><em>Allergènes : voir chaque produit</em></div><span class="p">2 500 F</span></li>
+</ul>
+</section>
+
+<section class="card" id="sales" style="--a:var(--red)">
+<h2><span class="ic">02</span>Snacks salés <small>Savory snacks</small></h2>
+<ul>
+<li><div><b>Fataya</b><i>Pâte pastel, viande hachée, légumes, épices</i><em>Gluten</em></div><span class="p">400 F</span></li>
+<li><div><b>Nem</b><i>Feuille de riz, champignon, crevette, coriandre, viande hachée, sauce</i><em>Crustacés · Gluten · Soja</em></div><span class="p">400 F</span></li>
+<li><div><b>Acara crevette</b><i>Pâte d'acara (haricots), épices, crevette</i><em>Crustacés</em></div><span class="p">400 F</span></li>
+<li><div><b>Crispy poulet</b><i>Farine de blé, chapelure, farce au poulet</i><em>Gluten · Œufs</em></div><span class="p">600 F</span></li>
+</ul>
+</section>
+
+<section class="card" id="sucres" style="--a:var(--salmon)">
+<h2><span class="ic">03</span>Snacks sucrés <small>Sweet snacks</small></h2>
+<ul>
+<li><div><b>Viennoiserie</b><i>Beignet, croissant, drops, brownie</i><em>Gluten · Œufs · Lait · traces de fruits à coque</em></div><span class="p">700 F</span></li>
+<li><div><b>Popcorn · pot GM</b><i>Maïs soufflé, sucre caramélisé</i></div><span class="p">1 000 F</span></li>
+<li><div><b>Glace · sorbet</b><i>Parfums assortis : bouye, mangue, cocktail, corossol, vanille-choco</i><em>Voir étiquette · traces de fruits à coque</em></div><span class="p">1 000 F</span></li>
+<li><div><b>Tiramisu</b><br><small class="flavors">Mangue-coco · Choco-noisette · Bouye-caramel</small><i>120 g</i><em>Gluten · Œufs · Lait · Fruits à coque</em></div><span class="p">2 000 F</span></li>
+
+
+</ul>
+</section>
+
+<section class="card" id="jus" style="--a:var(--teal)">
+<h2><span class="ic">04</span>Jus locaux <small>Local juices</small></h2>
+<p class="note">300 ml · aucun allergène majeur identifié</p>
+<ul>
+<li><div><b>Bouye</b><i>Pulpe de bouye (pain de singe), corossol</i></div><span class="p">1 000 F</span></li>
+<li><div><b>Bissap</b><i>Fleurs d'hibiscus, menthe</i></div><span class="p">1 000 F</span></li>
+<li><div><b>Moringa + Ditakh</b><i>Pulpe de ditakh, moringa</i></div><span class="p">1 000 F</span></li>
+</ul>
+</section>
+
+<section class="card" id="chaud" style="--a:var(--blue)">
+<h2><span class="ic">05</span>Boissons chaudes <small>Hot drinks</small></h2>
+<ul>
+<li><div><b>Thé</b><i>250 ml · Thé vert, menthe, sucre</i><em>Aucun allergène majeur identifié</em></div><span class="p">500 F</span></li>
+<li><div><b>Café</b><i>250 ml · Café moulu, eau chaude, sucre</i><em>Aucun allergène</em></div><span class="p">1 000 F</span></li>
+<li><div><b>Latte / Chocolat chaud</b><i>Café, lait, chantilly, cacao, sucre</i><em>Lait · Fruits à coque</em></div><span class="p"><small>PM 250 ml</small> 1 000 F<br><small>GM 380 ml</small> 1 500 F</span></li>
+</ul>
+</section>
+
+<section class="card" id="frais" style="--a:var(--orange)">
+<h2><span class="ic">06</span>Boissons fraîches <small>Cold drinks</small></h2>
+<ul>
+<li><div><b>Coca-Cola · Sprite · Fanta</b><i>Canette 330 ml</i><em>Aucun allergène majeur identifié (voir étiquette)</em></div><span class="p">600 F</span></li>
+<li><div><b>Eau minérale</b><i>Bouteille 500 ml</i><em>Aucun allergène</em></div><span class="p">500 F</span></li>
+</ul>
+</section>
+
+</main>
+<footer>Prix en francs CFA · Allergènes indiqués sous chaque produit</footer>
+</div>
+</body>
+</html>
